@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "stakewise-cli"
 version = "0.1.2"
-description = "Galaxy Digital Operator CLI is used to generate and manage Ethereum validator keys."
+description = "Operator CLI is used to generate and manage Ethereum validator keys."
 authors = ["Dmitri Tsumak <tsumak.dmitri@gmail.com>","Mario Delgado <mdelgado@cryptomanufaktur.io>","Thorsten Behrens <tbehrens@cryptomanufaktur.io>"]
 license = "AGPL-3.0-only"
 readme = "README.md"

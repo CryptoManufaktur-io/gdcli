@@ -1,10 +1,8 @@
-# Keysync CLI
+# Operator CLI
 
-Keysync CLI takes validator keys generated with staking-deposit-cli and
-synchronizes them to a PostgreSQL DB for use by web3signer.
+Operator CLI takes validator keys generated with staking-deposit-cli and synchronizes them to a PostgreSQL DB for use by web3signer.
 
-It is fork of Stakewise's Operators CLI, with most functionality removed,
-and DB sync from keystore-m files added.
+It is a fork of Stakewise's Operators CLI, with most functionality removed, and DB sync from keystore-m files added.
 
 ## Usage
 
@@ -29,9 +27,9 @@ Adjust `RELEASE_VERSION` and run:
 ```
 export RELEASE_VERSION=x.x.x
 export PYTHONHASHSEED=42
-export BUILD_FILE_NAME=~/gd-cli-${RELEASE_VERSION}-linux-amd64;
+export BUILD_FILE_NAME=op-cli-${RELEASE_VERSION}-linux-amd64;
 mkdir ~/${BUILD_FILE_NAME};
-poetry run pyinstaller --onefile --hidden-import multiaddr.codecs.uint16be --hidden-import multiaddr.codecs.idna --collect-data stakewise_cli ./stakewise_cli/main.py --name gd-cli --distpath ~/${BUILD_FILE_NAME}
+poetry run pyinstaller --onefile --hidden-import multiaddr.codecs.uint16be --hidden-import multiaddr.codecs.idna --collect-data stakewise_cli ./stakewise_cli/main.py --name op-cli --distpath ~/${BUILD_FILE_NAME}
 ```
 
 
