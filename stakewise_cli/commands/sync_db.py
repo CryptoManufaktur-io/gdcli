@@ -1,4 +1,5 @@
 import os
+from sys import exit
 import math
 
 from typing import Dict
@@ -7,11 +8,8 @@ import click
 import glob
 from eth_typing import ChecksumAddress, HexStr
 
-from stakewise_cli.eth2 import prompt_beacon_client, validate_mnemonic
-from stakewise_cli.networks import AVAILABLE_NETWORKS, MAINNET
 from stakewise_cli.storages.database import Database, check_db_connection
-from stakewise_cli.transfers import decrypt_transferred_keys
-from stakewise_cli.validators import validate_db_uri, validate_operator_address
+from stakewise_cli.validators import validate_db_uri
 from stakewise_cli.web3signer import Web3SignerManager
 
 from staking_deposit.key_handling.keystore import Keystore
@@ -33,6 +31,7 @@ from staking_deposit.key_handling.keystore import Keystore
 @click.option(
     "--private-keys-dir",
     help="The folder with private keys.",
+    prompt="Enter the folder holding keystore-m files",
     type=click.Path(exists=False, file_okay=False, dir_okay=True),
 )
 def sync_db(
@@ -73,9 +72,9 @@ def sync_db(
                 fg="red"
             )
 
-            quit()
+            exit("Password incorrect")
 
-        keypairs[keystore.pubkey] = int.from_bytes(secret_bytes, 'big')
+        keypairs['0x'+keystore.pubkey] = int.from_bytes(secret_bytes, 'big')
 
     click.confirm(
         f"Found {len(keypairs)} key pairs, apply changes to the database?",

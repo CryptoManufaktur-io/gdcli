@@ -4,20 +4,9 @@ from functools import cached_property
 from typing import Dict, List, Set
 
 import click
-from eth_typing import ChecksumAddress, HexStr
-from py_ecc.bls import G2ProofOfPossession
-from web3 import Web3
-from web3.beacon import Beacon
+from eth_typing import HexStr
 
 from stakewise_cli.encoder import Encoder
-from stakewise_cli.eth1 import (
-    get_operator_deposit_data_ipfs_link,
-    is_validator_registered,
-)
-from stakewise_cli.eth2 import EXITED_STATUSES, get_mnemonic_signing_key, get_validators
-from stakewise_cli.ipfs import ipfs_fetch
-from stakewise_cli.queries import get_ethereum_gql_client, get_stakewise_gql_client
-from stakewise_cli.settings import IS_LEGACY
 from stakewise_cli.typings import DatabaseKeyRecord, SigningKey
 from stakewise_cli.utils import bytes_to_str
 
@@ -29,22 +18,6 @@ class Web3SignerManager:
     ):
         self.validator_capacity = validator_capacity
         self.encoder = Encoder()
-
-    def check_exited_public_keys(self, keys: List[HexStr]) -> List[HexStr]:
-        """Remove operator's public keys that have been exited."""
-        exited_public_keys = []
-        # fetch validators in chunks of 100 keys
-        for i in range(0, len(keys), 100):
-            validators = get_validators(
-                beacon=self.beacon,
-                public_keys=list(keys)[i : i + 100],
-                state_id="finalized",
-            )
-            for validator in validators:
-                if validator["status"] in EXITED_STATUSES:
-                    public_key = validator["validator"]["pubkey"]
-                    exited_public_keys.append(public_key)
-        return exited_public_keys
 
     def process_transferred_keypairs(
         self, keypairs: Dict[HexStr, int]
