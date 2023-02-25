@@ -59,7 +59,7 @@ def sync_db(
 
     click.secho("Decrypting private keys...", bold=True)
 
-    for filename in glob.glob(os.path.join(private_keys_dir, "*.json")):
+    for filename in glob.glob(os.path.join(private_keys_dir, "keystore*.json")):
         keystore = Keystore.from_file(filename)
 
         try:
