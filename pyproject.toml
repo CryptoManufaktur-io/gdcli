@@ -10,10 +10,11 @@ readme = "README.md"
 python = ">=3.8,<3.11"
 python-decouple = "==3.6"
 web3 = "==5.28.0"
-staking-deposit = {git = "https://github.com/ethereum/staking-deposit-cli", rev = "v2.3.0"}
+py-ecc = "==5.2.0"
+staking-deposit = {git = "https://github.com/ethereum/staking-deposit-cli", rev = "v2.5.0"}
 gql = {version = "==3.1.0", extras = ["aiohttp"]}
 click = "==8.1.2"
-psycopg2-binary = "==2.9.3"
+psycopg2 = "==2.9.6"
 
 [tool.poetry.dev-dependencies]
 mypy = "==0.942"
