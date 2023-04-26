@@ -11,7 +11,7 @@ It is a fork of Stakewise's Operators CLI, with most functionality removed, and 
 #### Install prerequisites
 
 ```
-sudo apt-get install python3-dev python3-pip python3-poetry build-essential libpq-dev
+sudo apt-get install python3-dev python3-pip build-essential libpq-dev
 pip3 install poetry
 pip3 install pyinstaller
 ```
@@ -19,6 +19,8 @@ pip3 install pyinstaller
 Because of staking-deposit-cli, Python 3.11 is not currently supported.
 
 #### Install dependencies
+
+You may need to log out and back in so `~/.local/bin` is in the path and poetry is found
 
 `poetry install --no-interaction --no-root`
 
