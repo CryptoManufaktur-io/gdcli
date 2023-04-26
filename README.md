@@ -64,7 +64,7 @@ to deploy the staking infrastructure.
 You will use the keys generated in step 1. Place all keystore-m files into a directory. They all need to have the same password.
 
 ```bash
-./gd-cli sync-db
+./op-cli sync-db
 ```
 
 This will synchronize all keys to the database, encrypt them at rest, and give you a decryption key.
