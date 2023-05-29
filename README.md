@@ -43,7 +43,7 @@ Use the official [staking-deposit-cli](https://github.com/ethereum/staking-depos
 that outputs standard `keystore-m` JSON files to generate staking keys. This should be done on an airgapped, ephemeral
 machine, for example a Linux Live USB.
 
-Make sure to set a withdrawal address with `--eth1_withdrawal_address 0xMYWALLET` during key generation! If this is not done, the withdrawal credentials will be a BLS key encoded by the mnemonic, and a withdrawal address would need to be set at a later date.
+Make sure to set a withdrawal address with `--execution_address 0xMYWALLET` during key generation! If this is not done, the withdrawal credentials will be a BLS key encoded by the mnemonic, and a withdrawal address would need to be set at a later date.
 
 You will have:
 
